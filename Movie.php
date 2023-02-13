@@ -20,6 +20,8 @@
 
                 $this->_movieType = $movieType;
                 $this->_movieType->addMovieToTypeList($this);
+
+                $this->_director->addMovieToDirectorList($this);
             }
 
             // Accesseurs/Mutateurs

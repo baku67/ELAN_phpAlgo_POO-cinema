@@ -5,15 +5,17 @@
     });
 
 
-    echo "Instanciations:<br>";
+    echo "<h3>Instanciations:</h3><br>";
     $director1 = new Director("James", "Cameron", "Homme", '1900-05-06');
     echo $director1;
-    $movieType1 = new Movietype("drama");
+    $movieType1 = new Movietype("Drama");
     echo $movieType1 . "<br>";
     $movie1 = new Movie("Titanic", "1984-05-06", 98.56, $director1, "blablabla blabla bla blablabla blabla bla", $movieType1);
     echo $movie1;
+    $movie2 = new Movie("Titanic2", "1994-10-11", 102.32, $director1, "blobloblo bloblo blo blobloblo bloblo blo", $movieType1);
 
-    echo "<br><br><br> Résultat:<br>" . implode(' ,', $movieType1->getGenreMoviesList());
+    echo "<br><br><br> <h3>Résultat:</h3><br>Liste des films du genre \"" . $movieType1->getType() . "\":<br> " . implode(' ,', $movieType1->getGenreMoviesList()) . "<br>";
+    echo "<br><br>" . $director1->printFilmography();
     
 
     // 1 role = X Acteurs
