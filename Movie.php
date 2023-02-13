@@ -8,16 +8,16 @@
             private float $_length;
             private Director $_director;
             private string $_synopsys;
-            private string $_type;
+            private Movietype $_movieType;
 
             // Constructeur
-            public function __construct(string $title, DateTime $frenchPublishDate, float $length, Director $director, string $synopsys, string $type) {
+            public function __construct(string $title, string $frenchPublishDate, float $length, Director $director, string $synopsys, Movietype $movieType) {
                 $this->_title = $title;
-                $this->_frenchPublishDate = $frenchPublishDate;
+                $this->_frenchPublishDate = new DateTime($frenchPublishDate);
                 $this->_length = $length;
                 $this->_director = $director;
                 $this->_synopsys = $synopsys;
-                $this->_type = $type;
+                $this->_movieType = $movieType;
             }
 
             // Accesseurs/Mutateurs
@@ -36,8 +36,8 @@
             public function setSynopsys(string $synopsys) {
                 $this->_synopsys = $synopsys;
             }
-            public function setType(string $type) {
-                $this->_type = $type;
+            public function setMovieType(Movietype $movieType) {
+                $this->_movieType = $movieType;
             }
 
             public function getTitle():string {
@@ -56,8 +56,14 @@
                 // Maximum de 25 chars affichés
                 return mb_strimwidth($this->_synopsys, 0, 25, "...");
             }
-            public function getType():string {
-                return $this->_type;
+            public function getMovieType():Movietype {
+                return $this->_movieType;
+            }
+
+
+            // Méthodes:
+            public function __toString() {
+                return "Film: " . $this->getTitle() . "(sorti le " . $this->getFrenchPublishDate()->format('Y-m-d') . "): Durée: " . $this->getLength() . ", Type: " . $this->getMovieType() . ", Réalisateur: " . $this->getDirector() . "<br>Résumé: " . $this->getSynopsys();
             }
 
 
