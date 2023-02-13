@@ -63,7 +63,7 @@
 
             // Méthodes:
             public function __toString() {
-                return "Film: " . $this->getTitle() . "(sorti le " . $this->getFrenchPublishDate()->format('Y-m-d') . "): Durée: " . $this->getLength() . ", Type: " . $this->getMovieType() . ", Réalisateur: " . $this->getDirector() . "<br>Résumé: " . $this->getSynopsys();
+                return "Film: " . $this->getTitle() . "(sorti le " . $this->getFrenchPublishDate()->format('Y-m-d') . "): Durée: " . $this->getLength() . ", Type: " . $this->getMovieType() . ", Réalisateur: " . $this->getDirector() . "Résumé: " . $this->getSynopsys() . "<br>";
             }
 
 

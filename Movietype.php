@@ -30,6 +30,6 @@
         }
 
         public function __toString() {
-            return "Type " . $this->getType() . "<br>";
+            return "Type " . $this->getType();
         }
     }
