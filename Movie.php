@@ -17,7 +17,9 @@
                 $this->_length = $length;
                 $this->_director = $director;
                 $this->_synopsys = $synopsys;
+
                 $this->_movieType = $movieType;
+                $this->_movieType->addMovieToTypeList($this);
             }
 
             // Accesseurs/Mutateurs

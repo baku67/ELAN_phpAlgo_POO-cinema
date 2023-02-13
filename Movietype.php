@@ -21,12 +21,22 @@
         }
 
 
-        // Méthodes
+        // Méthodes 
         public function addMovieToTypeList(Movie $movie) {
-
+            $this->_movieList[] = $movie;
+            echo "Le film créé \"" . $movie->getTitle() . "\" a été ajouté au Genre \"" . $this->_type . "\"<br>";
         }
-        public function addMutipleMoviesToTypeList(array $movies) {
+        // Plus besoin car laison Film/Genre lors de la construction du film
+        // public function addMutipleMoviesToTypeList(array $movies) {
+        //     $moviesTitles = [];
+        //     foreach($movies as $movie) {
+        //         $this->_movieList[] = $movie;
+        //         $movieTitles[] = $movie->getTitle();
+        //     }
+        // }
 
+        public function getGenreMoviesList(): array {
+            return $this->_movieList;
         }
 
         public function __toString() {
