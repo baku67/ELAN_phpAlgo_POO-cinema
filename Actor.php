@@ -4,16 +4,21 @@
 
         // Propriétés
         protected array $_roleList;
+        protected array $_movieList;
 
         // Constructeur
         public function __construct(string $firstName, string $lastName, string $gender, string $birthDate) {
             parent::__construct($firstName, $lastName, $gender, $birthDate);
             $this->_roleList = [];
+            $this->_movieList = [];
         }
 
         // Accesseurs / Mutateurs
         public function getRoleList(): array {
             return $this->_roleList;
+        }
+        public function addMovieToActor(Movie $movie) {
+            $this->_movieList[] = $movie;
         }
         public function addRoleToActor(Role $role) {
             $this->_roleList[] = $role;
@@ -31,8 +36,14 @@
         }
 
         // Méthodes
+        public function printActorRoleList() {
+            echo implode(",", $this->_roleList);
+        }
+        public function printActorMovieList() {
+            echo "Filmographie de l'acteur " . $this->getFirstName() . " " . $this->getLastName() . ":<br>";
+            return $this->_movieList;
+        }
 
-        // Méthodes
         public function __toString() {
             return "Acteur: " . $this->getFirstName() . " " . $this->getLastName() . ": " . $this->getGender() . " né le " . $this->getbirthDate()->format("Y/m/d") . "<br>";
         }

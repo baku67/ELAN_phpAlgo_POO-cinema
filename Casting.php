@@ -10,6 +10,12 @@
             $this->_movie = $movie;
             $this->_actor = $actor;
             $this->_role = $role;
+
+            $movie->addCastingtoMovie($this);
+            
+            $actor->addRoleToActor($role);
+            $actor->addMovieToActor($movie);
+            $role->addActorToRole($actor);
         }
 
         // Accesseurs / Mutateurs
@@ -33,10 +39,14 @@
             $this->_role = $role;
         }
 
-        
+
         // méthodes:
-        public function printCasting() {
-            echo "Dans le film \"" . $this->_movie->getTitle() . "\", " ;
+        public function printInfos() {
+            // echo "Dans le film \"" . $this->_movie->getTitle() . "\"";
+        }
+
+        public function __toString():string {
+            return "Acteur: " . $this->getActor()->getFirstName() . $this->getActor()->getLastName() . ", Role:" . $this->getRole()->getName() . "<br>";
         }
 
 

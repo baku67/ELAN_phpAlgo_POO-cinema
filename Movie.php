@@ -9,22 +9,21 @@
             private Director $_director;
             private string $_synopsys;
             private Movietype $_movieType;
-            private array $_roles;
+            private array $_casting;
 
             // Constructeur
-            public function __construct(string $title, string $frenchPublishDate, float $length, Director $director, string $synopsys, Movietype $movieType, array $roles) {
+            public function __construct(string $title, string $frenchPublishDate, float $length, Director $director, string $synopsys, Movietype $movieType) {
                 $this->_title = $title;
                 $this->_frenchPublishDate = new DateTime($frenchPublishDate);
                 $this->_length = $length;
                 $this->_director = $director;
                 $this->_synopsys = $synopsys;
+                $this->_casting = [];
 
                 $this->_movieType = $movieType;
                 $this->_movieType->addMovieToTypeList($this);
 
                 $this->_director->addMovieToDirectorList($this);
-
-                $this->_roles = $roles;
             }
 
             // Accesseurs/Mutateurs
@@ -67,12 +66,18 @@
                 return $this->_movieType;
             }
 
-            public function printAllRoles() {
-                echo "Liste des roles pour le film \"" . $this->getTitle() . "\":<br>" . implode(", ", $this->_roles);
-            }
-
 
             // Méthodes:
+            public function addCastingtoMovie(Casting $casting) {
+                $this->_casting[] = $casting;
+            }
+            public function printMovieCastings() {
+                echo "Pour le film \"" . $this->getTitle() . "\",<br>";
+                foreach($this->_casting as $casting) {
+                    echo $casting;
+                }
+            }
+
             public function __toString() {
                 return "Film: " . $this->getTitle() . "(sorti le " . $this->getFrenchPublishDate()->format('Y-m-d') . "): Durée: " . $this->getLength() . ", Type: " . $this->getMovieType() . ", Réalisateur: " . $this->getDirector() . "Résumé: " . $this->getSynopsys() . "<br>";
             }
