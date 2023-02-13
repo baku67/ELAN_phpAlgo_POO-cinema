@@ -17,11 +17,13 @@
         }
         public function addRoleToActor(Role $role) {
             $this->_roleList[] = $role;
+            $role->addActorToRole($this);
             return "Le rôle \"" . $role->getName() . "\" a été ajouté à l'acteur \"" . $this->getFirstName() . " " . $this->getLastName();
         }
         public function addMultipleRolesToActor(array $roles) {
             $roleArray = [];
             foreach($roles as $role) {
+                $role->addActorToRole($this);
                 $this->_roleList[] = $role;
                 $roleArray = $role->getName();
             }

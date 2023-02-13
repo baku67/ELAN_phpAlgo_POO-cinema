@@ -9,9 +9,10 @@
             private Director $_director;
             private string $_synopsys;
             private Movietype $_movieType;
+            private array $_roles;
 
             // Constructeur
-            public function __construct(string $title, string $frenchPublishDate, float $length, Director $director, string $synopsys, Movietype $movieType) {
+            public function __construct(string $title, string $frenchPublishDate, float $length, Director $director, string $synopsys, Movietype $movieType, array $roles) {
                 $this->_title = $title;
                 $this->_frenchPublishDate = new DateTime($frenchPublishDate);
                 $this->_length = $length;
@@ -22,6 +23,8 @@
                 $this->_movieType->addMovieToTypeList($this);
 
                 $this->_director->addMovieToDirectorList($this);
+
+                $this->_roles = $roles;
             }
 
             // Accesseurs/Mutateurs
@@ -62,6 +65,10 @@
             }
             public function getMovieType():Movietype {
                 return $this->_movieType;
+            }
+
+            public function printAllRoles() {
+                echo "Liste des roles pour le film \"" . $this->getTitle() . "\":<br>" . implode(", ", $this->_roles);
             }
 
 
