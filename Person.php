@@ -48,10 +48,29 @@
     }
 
     // 
-    class Homme {
+    class Director extends Person {
 
+        
     }
+    class Actor extends Person {
 
-    class Femme {
+        // Propriétés
+        protected string $_role;
 
+        // Constructeur
+        public function __construct(string $firstName, string $lastName, string $gender, DateTime $birthDate, string $role) {
+            parent::__construct($firstName, $lastName, $gender, $birthDate);
+            $this->_role = $role;
+        }
+
+        // Accesseurs/Mutateurs
+        public function getRole(): string {
+            return $this->_role;
+        }
+        public function setRole(string $role) {
+            $this->_role = $role;
+        }
+
+        // Méthodes
+        
     }
